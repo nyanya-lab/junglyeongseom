@@ -296,19 +296,14 @@ const rules = [
 const list = document.getElementById("ruleList");
 const input = document.getElementById("searchInput");
 
-function renderList(filter="") {
-  list.innerHTML = "";
-  rules
-    .filter(r => r.title.includes(filter) || r.desc.includes(filter))
-    .forEach(r => {
-      const div = document.createElement("div");
-      div.className = "rule";
+/* 🔍 검색어 하이라이트 함수 */
 function highlight(text, keyword) {
   if (!keyword) return text;
   const regex = new RegExp(`(${keyword})`, "gi");
   return text.replace(regex, `<span class="highlight">$1</span>`);
 }
 
+/* 📌 규칙 박스 렌더링 */
 function renderList(filter="") {
   list.innerHTML = "";
 
@@ -329,16 +324,15 @@ function renderList(filter="") {
       list.appendChild(div);
     });
 }
-      list.appendChild(div);
-    });
-}
 
+/* 입력 이벤트 */
 input.addEventListener("input", e => {
   renderList(e.target.value.trim());
 });
 
-// 처음엔 전체 목록 표시
+/* 첫 랜더링 */
 renderList();
+
 </script>
 
 </body>
