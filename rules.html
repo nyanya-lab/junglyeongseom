@@ -305,21 +305,38 @@ function highlight(text, keyword) {
 }
 
 /* 📌 규칙 박스 렌더링 */
-function renderList(filter="") {
+
+  function renderList(filter="") {
   list.innerHTML = "";
 
+  // 🔍 공백 단위로 키워드 분리
+  const keywords = filter.trim().split(/\s+/);
+
   rules
-    .filter(r => r.title.includes(filter) || r.desc.includes(filter))
+    .filter(r => {
+      const text = (r.title + " " + r.desc).toLowerCase();
+
+      // 🔍 모든 키워드가 포함된 규칙만 true
+      return keywords.every(k => text.includes(k.toLowerCase()));
+    })
     .forEach(r => {
-      const title = highlight(r.title, filter);
-      const desc  = highlight(r.desc, filter);
+      // 🔍 강조 표시용 함수
+      function highlight(text) {
+        let result = text;
+        keywords.forEach(k => {
+          if (!k) return;
+          const regex = new RegExp(`(${k})`, "gi");
+          result = result.replace(regex, `<span class="highlight">$1</span>`);
+        });
+        return result;
+      }
 
       const div = document.createElement("div");
       div.className = "rule";
 
       div.innerHTML = `
-        <div class="rule-title">${title}</div>
-        ${desc}
+        <div class="rule-title">${highlight(r.title)}</div>
+        ${highlight(r.desc)}
       `;
 
       list.appendChild(div);
