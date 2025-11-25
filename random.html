@@ -95,31 +95,27 @@
 }
 
 .info-icon {
-  width: 95px;
-  padding: 6px 6px;
+  width: 95px;               /* 고정 너비 */
+  padding: 6px 6px;         /* 내부 여백 */
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
 
   display: flex;
-  align-items: center;   /* 아이콘 내부 가운데 */
-  justify-content: center;
+  justify-content: center;   /* 가로 가운데 */
+  align-items: center;       /* 세로 가운데 */
+  text-align: center; 
 
-  text-align: center;
-  line-height: 1.35;
-  min-height: 30px;
-  height: auto;
+  background: #ffe7a3;       /* 예: 주의 색 */
 }
 
 /* 🔥 새로 추가!! 옆의 텍스트도 가운데 정렬 */
-.info-text {
-  display: flex; 
-  align-items: center;     /* 세로 가운데 */
-  padding: 6px 0;          /* 위아래 숨 좀 줌 */
-  height: 100%;            /* 부모 row 전체 높이 채움 → 가운데 정렬 가능 */
-  line-height: 1.6;
+.info-block {
+  display: flex;
+  align-items: center;     /* ← 아이콘과 내용의 세로 중심 맞춤 */
+  gap: 14px;
+  margin: 10px 0;
 }
-
 .info-warn {
   background: #ffe7a3;
 }
@@ -230,16 +226,16 @@
 
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
-  <div>
-    <div class="info-text"><strong>'노예 반란' 이벤트 카드</strong> 사용:<br>
-    이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올립니다.</div>
+    <div class="info-text">
+    <strong>'노예 반란' 이벤트 카드</strong> 사용:<br>
+    이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올립니다.
   </div>
 </div>
 
 <div class="info-block">
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  <div>
-    <div class="info-text">마을을 파괴하는 데 수월한 정령</div>
+  
+    <div class="info-text">마을을 파괴하는 데 수월한 정령
   </div>
 </div>
 
