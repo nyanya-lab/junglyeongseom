@@ -251,43 +251,32 @@ function randomize() {
   let descHTML = "";
 
   if (mode === 0) {
-    // 시나리오만
     const s = rand(scenarios);
     title = `🎭 시나리오: ${s.name}`;
     descHTML = `
-      <div class="detail-block">
-        <div class="detail-label">🎭 시나리오</div>
-        <div>${s.desc}</div>
-      </div>
+      <strong>🎭 ${s.name}</strong><br>
+      ${s.desc}
     `;
   } 
   else if (mode === 1) {
-    // 적대국만
     const e = rand(enemies);
     title = `⚔️ 적대국: ${e.name}`;
     descHTML = `
-      <div class="detail-block">
-        <div class="detail-label">⚔️ 적대국</div>
-        <div>${e.desc}</div>
-      </div>
+      <strong>⚔️ ${e.name}</strong><br>
+      ${e.desc}
     `;
   } 
   else {
-    // 둘 다
     const s = rand(scenarios);
     const e = rand(enemies);
     title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
 
     descHTML = `
-      <div class="detail-block">
-        <div class="detail-label">🎭 시나리오</div>
-        <div>${s.desc}</div>
-      </div>
+      <strong>🎭 ${s.name}</strong><br>
+      ${s.desc}<br><br>
 
-      <div class="detail-block">
-        <div class="detail-label">⚔️ 적대국</div>
-        <div>${e.desc}</div>
-      </div>
+      <strong>⚔️ ${e.name}</strong><br>
+      ${e.desc}
     `;
   }
 
