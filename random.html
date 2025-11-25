@@ -75,19 +75,34 @@
       line-height: 1.7;
       color: #3b2714;
     }
-/* ====== 적대국 태그 스타일 ====== */
-.tag {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin: 4px 0;
+.info-block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 6px 12px;
+  margin: 10px 0;
 }
 
-.tag.easy { background: #e9f8e9; color: #2f6e2f; }   /* 초록 - 쉬움 */
-.tag.hard { background: #fdeaea; color: #a33131; }   /* 빨강 - 어려움 */
-.tag.warn { background: #fff4c7; color: #8a6a00; }   /* 노랑 - 주의 */
+.info-icon {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #3a2511;
+  text-align: center;
+}
+
+.info-warn {
+  background: #ffe9b3;
+}
+
+.info-easy {
+  background: #d6f5d6;
+}
+
+.info-hard {
+  background: #ffd6d6;
+}
     .note-box {
       margin-top: 25px;
       background: rgba(255,255,255,0.55);
@@ -184,16 +199,27 @@
 플랜테이션 식민지를 빠르게 확장하며 마을 개발이 매우 빠른 적입니다.<br>
 탐험가들이 적극적으로 움직여 초반 압박이 강합니다.<br><br>
 
-<div class="tag warn">⚠️ 주의</div>
-'노예 반란' 이벤트 카드 사용:<br>
-이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장 꺼내 맨 위에 올립니다.<br>
+<div class="info-block">
+  <div class="info-icon info-warn">⚠️ 주의</div>
+  <div>
+    '노예 반란' 이벤트 카드 사용:<br>
+    이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올립니다.
+  </div>
+</div>
 
-<div class="tag easy">🟢 쉬운 정령</div>
-마을을 파괴하는 데 수월한 정령<br>>
+<div class="info-block">
+  <div class="info-icon info-easy">🟢 쉬운 정령</div>
+  <div>
+    마을을 파괴하는 데 수월한 정령
+  </div>
+</div>
 
-<div class="tag hard">🔴 어려운 정령</div>
-마을 파괴 능력이 떨어지는 정령
-`},
+<div class="info-block">
+  <div class="info-icon info-hard">🔴 어려운 정령</div>
+  <div>
+    마을 파괴 능력이 떨어지는 정령
+  </div>
+</div>`},
       { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
     {name: "스코틀랜드 왕국",
   desc: `무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며,<br> 여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br><br>
