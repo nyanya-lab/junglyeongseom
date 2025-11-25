@@ -254,20 +254,20 @@
       if (mode === 0) {
         const s = rand(scenarios);
         title = `🎭 시나리오: ${s.name}`;
-        descHTML = `<strong>📘 시나리오 설명:</strong><br>${s.desc}`;
+        descHTML = `<strong>🎭 시나리오 설명:</strong><br>${s.desc}`;
       } 
       else if (mode === 1) {
         const e = rand(enemies);
         title = `⚔️ 적대국: ${e.name}`;
-        descHTML = `<strong>⚙️ 적대국 설명:</strong><br>${e.desc}`;
+        descHTML = `<strong>⚔️ 적대국 설명:</strong><br>${e.desc}`;
       } 
       else {
         const s = rand(scenarios);
         const e = rand(enemies);
         title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
         descHTML = `
-          <strong>📘 시나리오 설명:</strong><br>${s.desc}<br><br>
-          <strong>⚙️ 적대국 설명:</strong><br>${e.desc}
+          <strong>🎭 시나리오 설명:</strong><br>${s.desc}<br><br>
+          <strong>⚔️ 적대국 설명:</strong><br>${e.desc}
         `;
       }
 
