@@ -91,31 +91,33 @@
   grid-template-columns: 103px 1fr;
   gap: 10px 14px;
   margin: 10px 0;
-  align-items: stretch; /* row 높이를 공유하게 */
+
+  /* 핵심 !!!!!  
+     row 전체 높이를 아이콘과 내용이 공유하도록  
+     가운데 정렬 금지하기 */
+  align-items: stretch; 
 }
 
 .info-icon {
-  width: 95px;               /* 고정 너비 */
-  padding: 6px 6px;         /* 내부 여백 */
+  width: 95px;
+  padding: 6px 6px;     /* ← 양옆 여백 줄이기 */
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
 
-  display: flex;
-  justify-content: center;   /* 가로 가운데 */
-  align-items: center;       /* 세로 가운데 */
-  text-align: center; 
+  background: #ffe7a3;  /* 기본 주의 색 — 나중에 개별적으로 덮어씀 */
 
-  background: #ffe7a3;       /* 예: 주의 색 */
+  display: flex;
+  align-items: center;   /* 아이콘 내부 글자 세로 가운데 */
+  justify-content: center;
+
+  text-align: center;
+  line-height: 1.35;
+
+  height: auto;          /* ← 설명 줄길이에 맞춰 자동 증가 O */
+  min-height: 30px;      /* 너무 작지 않게만 최소값 */
 }
 
-/* 🔥 새로 추가!! 옆의 텍스트도 가운데 정렬 */
-.info-block {
-  display: flex;
-  align-items: center;     /* ← 아이콘과 내용의 세로 중심 맞춤 */
-  gap: 14px;
-  margin: 10px 0;
-}
 .info-warn {
   background: #ffe7a3;
 }
@@ -226,7 +228,7 @@
 
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
-    <div class="info-text">
+    <div>
     <strong>'노예 반란' 이벤트 카드</strong> 사용:<br>
     이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올립니다.
   </div>
@@ -234,15 +236,15 @@
 
 <div class="info-block">
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  
-    <div class="info-text">마을을 파괴하는 데 수월한 정령
+  <div>
+    마을을 파괴하는 데 수월한 정령
   </div>
 </div>
 
 <div class="info-block">
   <div class="info-icon info-hard">🔴 어려운 정령</div>
   <div>
-    <div class="info-text">마을 파괴 능력이 떨어지는 정령</div>
+   마을 파괴 능력이 떨어지는 정령
   </div>
 </div>`},
       { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
@@ -251,17 +253,17 @@
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
   <div>
-    <div class="info-text"><strong>D 섬보드</strong> : 해안이면서 습지인 지역이 2개 있어 게임의 균형을 크게 해칠 수 있음</div>
+    <strong>D 섬보드</strong> : 해안이면서 습지인 지역이 2개 있어 게임의 균형을 크게 해칠 수 있음
   </div>
 
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
   <div>
-    <div class="info-text">침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령</div>
+    침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령
   </div>
 
   <div class="info-icon info-hard">🔴 어려운 정령</div>
   <div>
-    <div class="info-text"><strong>해안 지역의 도시 건설</strong>을 막기 어려운 정령</div>
+    <strong>해안 지역의 도시 건설</strong>을 막기 어려운 정령
   </div>
 </div>`},
       { name: "스웨덴 왕국⭐", desc: "북방의 강력한 군세를 자랑합니다." },
