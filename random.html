@@ -113,9 +113,11 @@
 
 /* 🔥 새로 추가!! 옆의 텍스트도 가운데 정렬 */
 .info-text {
-  display: flex;
-  align-items: center;   /* ← 설명 세로 가운데 */
-  line-height: 1.5;
+  display: flex; 
+  align-items: center;     /* 세로 가운데 */
+  padding: 6px 0;          /* 위아래 숨 좀 줌 */
+  height: 100%;            /* 부모 row 전체 높이 채움 → 가운데 정렬 가능 */
+  line-height: 1.6;
 }
 
 .info-warn {
