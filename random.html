@@ -75,20 +75,19 @@
       line-height: 1.7;
       color: #3b2714;
     }
-.easy {
-  color: #2f7d32;          /* 톤다운 초록 */
+/* ====== 적대국 태그 스타일 ====== */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 700;
+  margin: 4px 0;
 }
 
-.hard {
-  color: #c62828;          /* 톤다운 빨강 */
-  font-weight: 700;
-}
-
-.warn {
-  color: #b8860b;          /* 노란-황토 계열 (우드톤과 잘 어울림) */
-  font-weight: 700;
-}
+.tag.easy { background: #e9f8e9; color: #2f6e2f; }   /* 초록 - 쉬움 */
+.tag.hard { background: #fdeaea; color: #a33131; }   /* 빨강 - 어려움 */
+.tag.warn { background: #fff4c7; color: #8a6a00; }   /* 노랑 - 주의 */
     .note-box {
       margin-top: 25px;
       background: rgba(255,255,255,0.55);
@@ -181,21 +180,31 @@
 
     const enemies = [
      { name: "프랑스 왕국⭐⭐",
-  desc: `플랜테이션 식민지를 빠르게 확장하며 마을 개발 속도가 매우 빠르며,  
-탐험가들이 적극적으로 움직여 초반 압박이 강한 적입니다.<br><br>
+  desc:`
+플랜테이션 식민지를 빠르게 확장하며 마을 개발이 매우 빠른 적입니다.<br>
+탐험가들이 적극적으로 움직여 초반 압박이 강합니다.<br><br>
 
-‼️ <span class="warn">'노예 반란' 이벤트 카드</span> :  
-&nbsp;&nbsp;• '노예 반란' 카드를 이벤트 덱 맨 위의 카드 2장과 함께 섞은 후,<br>
-&nbsp;&nbsp;• 이벤트 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올려놓습니다.<br><br>
+<div class="tag warn">⚠️ 주의</div>
+'노예 반란' 이벤트 카드 사용:<br>
+이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장 꺼내 맨 위에 올립니다.<br>
 
-‼️ <span class="easy">쉬운 정령</span> : 마을을 파괴하는 데 수월한 정령<br>
-‼️ <span class="hard">어려운 정령</span> : 마을 파괴에 능하지 못한 정령`},
+<div class="tag easy">🟢 쉬운 정령</div>
+마을을 파괴하는 데 수월한 정령<br>>
+
+<div class="tag hard">🔴 어려운 정령</div>
+마을 파괴 능력이 떨어지는 정령
+`},
       { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
     {name: "스코틀랜드 왕국",
-  desc: `무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며, 여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br>
-‼️ <span class="warn">D 섬보드</span> : 해안 지역이면서 습지인 지역이 2개가 있어 게임의 균형을 해칠 수 있음<br>
-‼️ <span class="easy">쉬운 정령</span> : 침략자 행동을 완전히 생략할 수 있는 정령<br>
-‼️ <span class="hard">어려운 정령</span> : 해안 지역의 도시 건설을 막는 것이 어려운 정령`},
+  desc: `무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며,<br> 여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br><br>
+<div class="tag warn">⚠️ 주의</div>
+D 섬보드 사용 시: 해안+습지가 2개라 난이도가 올라갑니다.<br><br>
+
+<div class="tag easy">🟢 쉬운 정령</div>
+침략자 행동을 통째로 생략시키는 정령<br><br>
+
+<div class="tag hard">🔴 어려운 정령</div>
+해안 지역 도시 건설을 제어하기 어려운 정령`},
       { name: "스웨덴 왕국⭐", desc: "북방의 강력한 군세를 자랑합니다." },
       { name: "잉글랜드 왕국⭐", desc: "해양 패권을 자랑하는 제국입니다." },
       { name: "브란덴부르크-프로이센 왕국⭐", desc: "규율 있고 단단한 군대를 가진 국가입니다." },
