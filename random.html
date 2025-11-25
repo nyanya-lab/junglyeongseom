@@ -76,7 +76,12 @@
       color: #3b2714;
        padding-right: 20px;
     }
-.info-block {
+#description {
+  text-align: left;
+  padding-right: 25px; /* ← 오른쪽 들여쓰기 */
+  box-sizing: border-box; /* 들여쓰기 적용 안정화 */
+}
+    .info-block {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;   /* ← 텍스트를 아이콘과 세로 가운데 정렬 */
