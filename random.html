@@ -12,7 +12,6 @@
       margin: 0;
       padding: 80px 20px 40px;
 
-      /* 🌳 메인과 동일한 우드톤 */
       background: linear-gradient(135deg, #f6e9d0, #f2d9b1);
       background-image:
         repeating-linear-gradient(
@@ -68,67 +67,52 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .description {
+    #description {
       text-align: left;
       margin-top: 20px;
       font-size: 15px;
       line-height: 1.7;
+      padding-left: 20px;
+      padding-right: 25px;
       color: #3b2714;
-       padding-right: 20px;
     }
-/* 설명 박스 안 들여쓰기 */
-#description {
-  padding-left: 20px;
-  padding-right: 25px;
-}
-.desc-text {
-  padding-left: 18px;
-  padding-right: 10px;
-  line-height: 1.7;
-}
-.info-block {
-  display: grid;
-  grid-template-columns: 103px 1fr;
-  gap: 10px 14px;
-  margin: 10px 0;
 
-  /* 핵심 !!!!!  
-     row 전체 높이를 아이콘과 내용이 공유하도록  
-     가운데 정렬 금지하기 */
-  align-items: stretch; 
-}
+    .desc-text {
+      padding-left: 18px;
+      padding-right: 10px;
+      line-height: 1.7;
+    }
 
-.info-icon {
-  width: 95px;
-  padding: 6px 6px;     /* ← 양옆 여백 줄이기 */
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.9rem;
+    /* 🔥 info-block 복구됨 */
+    .info-block {
+      display: grid;
+      grid-template-columns: 103px 1fr;
+      gap: 10px 14px;
+      margin: 10px 0;
+      align-items: stretch; 
+    }
 
-  background: #ffe7a3;  /* 기본 주의 색 — 나중에 개별적으로 덮어씀 */
+    .info-icon {
+      width: 95px;
+      padding: 6px 6px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
 
-  display: flex;
-  align-items: center;   /* 아이콘 내부 글자 세로 가운데 */
-  justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  text-align: center;
-  line-height: 1.35;
+      text-align: center;
+      line-height: 1.35;
 
-  height: auto;          /* ← 설명 줄길이에 맞춰 자동 증가 O */
-  min-height: 26px;      /* 너무 작지 않게만 최소값 */
-}
+      height: auto;
+      min-height: 26px;
+    }
 
-.info-warn {
-  background: #ffe7a3;
-}
-
-.info-easy {
-  background: #d9f5d9;
-}
-
-.info-hard {
-  background: #ffd4d4;
-}
+    .info-warn { background: #ffe7a3; }
+    .info-easy { background: #d9f5d9; }
+    .info-hard { background: #ffd4d4; }
 
     .note-box {
       margin-top: 25px;
@@ -145,56 +129,131 @@
       color: #4a341a;
       font-weight: 500;
       line-height: 1.6;
-  </div>
+    }
+
+    .back {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      background: linear-gradient(180deg, #fce6c8, #edc89a);
+      color: #4a2f14;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 999;
+    }
+
+    .back:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+
+<button class="back" onclick="location.href='index.html'">← 메인</button>
+
+<h1>🌊 정령섬 랜더마이저</h1>
+
+<div class="button-container">
+  <button onclick="randomize()">🎲 랜덤 돌리기</button>
+  <button onclick="location.href='rules.html'">⚙️ 세부 규칙 검색</button>
 </div>
 
-<div class="info-block">
-  <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  <div>
-    마을을 파괴하는 데 수월한 정령
-  </div>
+<div class="result-box">
+  <h2 id="title">결과가 여기에 표시됩니다</h2>
+  <div id="description"></div>
 </div>
 
-<div class="info-block">
-  <div class="info-icon info-hard">🔴 어려운 정령</div>
-  <div>
-   마을 파괴 능력이 떨어지는 정령
-  </div>
-</div>`},
-      { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
-    {name: "스코틀랜드 왕국",
-  desc: `무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며,<br> 여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br>
+<div class="note-box">
+  <strong>📌 게임 준비 규칙</strong><br>
+  게임 준비 중, 각각의 섬 보드에 맹수 1개와 역병 1개를 놓습니다.<br>
+  맹수는 <strong>게임 준비 아이콘이 없는 지역 중 번호가 가장 낮은 지역</strong>에 놓고,<br>
+  역병은 <strong>2번 지역(도시가 있는 지역)</strong>에 놓습니다.
+</div>
+
+<script>
+  const scenarios = [
+    { name: "다한의 저항⭐⭐⭐⭐", desc: "섬의 방어를 위한 첫 번째 시도. 정령들이 힘을 모아 적을 저지해야 합니다." },
+    { name: "식민지화 물결", desc: "침략자들이 해안을 따라 상륙을 시도합니다. 각 정령은 협력해야 합니다." },
+    { name: "운명이 펼쳐지다", desc: "운명의 실이 얽히며 섬의 정체가 드러납니다." },
+    { name: "해안 사수⭐⭐", desc: "바다를 통해 침략이 시작됩니다. 해안 지역이 중요합니다." },
+    { name: "두 번째 공격☆", desc: "한 번 물러난 적이 재정비하여 다시 돌아왔습니다." },
+    { name: "기습 공격☆", desc: "예상치 못한 방향에서의 기습. 방심은 금물입니다." },
+    { name: "다양한 지형", desc: "섬의 각 지역이 서로 다른 도전을 제공합니다." },
+    { name: "거대한 강", desc: "강이 전장의 중심이 됩니다." },
+    { name: "원소의 부름", desc: "정령들의 본질적인 힘이 깨어납니다." },
+    { name: "비열한 도적질", desc: "침략자들이 자원을 약탈합니다." },
+    { name: "섬의 심장을 지켜라☆", desc: "섬의 중심부가 공격받습니다." },
+    { name: "공포의 의식⭐⭐⭐", desc: "침략자들이 공포를 일으키는 의식을 준비합니다." },
+    { name: "오랫동안 잊혀졌던 능력⭐", desc: "옛 정령의 힘이 다시 깨어납니다." },
+    { name: "파멸의 불꽃 소환 의식⭐⭐⭐", desc: "침략자들이 강력한 불꽃을 소환하려 합니다." },
+    { name: "정령의 다양성", desc: "서로 다른 정령의 조합이 강력한 힘을 발휘합니다." }
+  ];
+
+  const enemies = [
+    {
+      name: "프랑스 왕국⭐⭐",
+      desc: `
+플랜테이션 식민지를 빠르게 확장하며 마을 개발이 매우 빠른 적입니다.<br>
+탐험가들이 적극적으로 움직여 초반 압박이 강합니다.<br>
+
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
   <div>
-    <strong>D 섬보드</strong> : 해안이면서 습지인 지역이 2개 있어 게임의 균형을 크게 해칠 수 있음
+    <strong>'노예 반란' 이벤트 카드</strong> 사용:<br>
+    이벤트 덱 맨 위의 카드 2장과 함께 섞은 후, 덱 맨 아래에서 카드 2장을 꺼내 맨 위에 올립니다.
   </div>
 
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  <div>
-    침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령
-  </div>
+  <div>마을을 파괴하는 데 수월한 정령</div>
 
   <div class="info-icon info-hard">🔴 어려운 정령</div>
-  <div>
-    <strong>해안 지역의 도시 건설</strong>을 막기 어려운 정령
-  </div>
-</div>`},
-      { name: "스웨덴 왕국⭐", desc: "북방의 강력한 군세를 자랑합니다." },
-      { name: "잉글랜드 왕국⭐", desc: "해양 패권을 자랑하는 제국입니다." },
-      { name: "브란덴부르크-프로이센 왕국⭐", desc: "규율 있고 단단한 군대를 가진 국가입니다." },
-      { name: "합스부르크 채굴 탐험대", desc: "자원 확보를 위해 섬에 접근합니다." },
-      { name: "러시아 차르국", desc: "광대한 영토에서 오는 압도적 물량을 보유합니다." }
-    ];
-function randomize() {
-  const mode = Math.floor(Math.random() * 3); // 0=시나리오, 1=적대국, 2=둘 다
-  let title = "";
-  let descHTML = "";
+  <div>마을 파괴 능력이 떨어지는 정령</div>
+</div>`
+    },
 
-  if (mode === 0) {
-    const s = rand(scenarios);
-    title = `🎭 시나리오: ${s.name}`;
-  descHTML = `
+    {
+      name: "스코틀랜드 왕국",
+      desc: `
+무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며,<br>
+여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br>
+
+<div class="info-block">
+  <div class="info-icon info-warn">⚠️ 주의</div>
+  <div><strong>D 섬보드</strong> : 해안이면서 습지인 지역이 2개 있어 게임의 균형을 해칠 수 있음</div>
+
+  <div class="info-icon info-easy">🟢 쉬운 정령</div>
+  <div>침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령</div>
+
+  <div class="info-icon info-hard">🔴 어려운 정령</div>
+  <div><strong>해안 지역의 도시 건설</strong>을 막기 어려운 정령</div>
+</div>`
+    },
+
+    { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
+    { name: "스웨덴 왕국⭐", desc: "북방의 강력한 군세를 자랑합니다." },
+    { name: "잉글랜드 왕국⭐", desc: "해양 패권을 자랑하는 제국입니다." },
+    { name: "브란덴부르크-프로이센 왕국⭐", desc: "규율 있고 단단한 군대를 가진 국가입니다." },
+    { name: "합스부르크 채굴 탐험대", desc: "자원 확보를 위해 섬에 접근합니다." },
+    { name: "러시아 차르국", desc: "광대한 영토에서 오는 압도적 물량을 보유합니다." }
+  ];
+
+  function randomize() {
+    const mode = Math.floor(Math.random() * 3);
+    let title = "";
+    let descHTML = "";
+
+    if (mode === 0) {
+      const s = rand(scenarios);
+      title = `🎭 시나리오: ${s.name}`;
+      descHTML = `
   <strong style="
     font-size:1.05rem;
     background:#fff3e4;
@@ -204,11 +263,11 @@ function randomize() {
   ">🎭 ${s.name}</strong>
   <div class="desc-text">${s.desc}</div>
 `;
-  } 
-  else if (mode === 1) {
-    const e = rand(enemies);
-    title = `⚔️ 적대국: ${e.name}`;
-   descHTML = `
+    }
+    else if (mode === 1) {
+      const e = rand(enemies);
+      title = `⚔️ 적대국: ${e.name}`;
+      descHTML = `
   <strong style="
     font-size:1.05rem;
     background:#fff3e4;
@@ -218,13 +277,13 @@ function randomize() {
   ">⚔️ ${e.name}</strong>
   <div class="desc-text">${e.desc}</div>
 `;
-  } 
-  else {
-    const s = rand(scenarios);
-    const e = rand(enemies);
-    title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
+    }
+    else {
+      const s = rand(scenarios);
+      const e = rand(enemies);
+      title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
 
- descHTML = `
+      descHTML = `
   <strong style="
     font-size:1.05rem;
     background:#fff3e4;
@@ -244,16 +303,16 @@ function randomize() {
   ">⚔️ ${e.name}</strong>
   <div class="desc-text">${e.desc}</div>
 `;
+    }
+
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("description").innerHTML = descHTML;
   }
 
-  document.getElementById("title").innerHTML = title;
-  document.getElementById("description").innerHTML = descHTML;
-}
-
-function rand(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-  </script>
+  function rand(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+</script>
 
 </body>
 </html>
