@@ -87,34 +87,40 @@
   padding-right: 10px;
   line-height: 1.7;
 }
-    .info-block {
+   .info-block {
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;   /* ← 텍스트를 아이콘과 세로 가운데 정렬 */
-  gap: 6px 12px;
+  grid-template-columns: 120px 1fr; /* ← 아이콘 박스 너비 고정 */
+  gap: 8px 14px;
   margin: 10px 0;
+  align-items: start;
 }
 
 .info-icon {
-  padding: 6px 10px;
-  border-radius: 6px;
+  width: 120px;                 /* 동일한 박스 크기! */
+  min-height: 32px;
+  padding: 6px 8px;
+  border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #3a2511;
-  text-align: center;
+  display: flex;
+  justify-content: center;      /* 가운데 정렬 */
+  align-items: center;
+  text-align: center;           /* 두 줄일 때도 가운데 */
+  line-height: 1.3;
 }
 
 .info-warn {
-  background: #ffe9b3;
+  background: #ffe7a3;
 }
 
 .info-easy {
-  background: #d6f5d6;
+  background: #d9f5d9;
 }
 
 .info-hard {
-  background: #ffd6d6;
+  background: #ffd4d4;
 }
+
     .note-box {
       margin-top: 25px;
       background: rgba(255,255,255,0.55);
