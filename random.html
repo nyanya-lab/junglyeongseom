@@ -83,16 +83,16 @@
   box-sizing: border-box;
 }
 .desc-text {
-  padding-left: 18px;
+  padding-left: 0;
   padding-right: 10px;
   line-height: 1.7;
 }
    .info-block {
   display: grid;
-  grid-template-columns: 120px 1fr; /* ← 아이콘 박스 너비 고정 */
+  grid-template-columns: 120px 1fr;
   gap: 8px 14px;
   margin: 10px 0;
-  align-items: start;
+  align-items: center;   /* ← 가운데 정렬 복구! */
 }
 
 .info-icon {
