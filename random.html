@@ -67,7 +67,18 @@
       margin-right: auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-
+/* 제목 라벨 스타일 */
+.result-label {
+  background: #fff3e4;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 1.03rem;
+  font-weight: 800;
+  color: #4b3319;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
     .description {
       text-align: left;
       margin-top: 20px;
@@ -76,11 +87,12 @@
       color: #3b2714;
        padding-right: 20px;
     }
+/* 설명 박스 안 들여쓰기 */
 #description {
   text-align: left;
-  padding-left: 10px;   /* ← 설명 전체를 오른쪽으로 밀기 */
-  padding-right: 25px;
-  box-sizing: border-box;
+  padding-right: 20px;
+  padding-left: 6px;  /* ← 내용만 살짝 오른쪽으로 이동 */
+  line-height: 1.65;
 }
 .desc-text {
   padding-left: 18px;
@@ -270,7 +282,7 @@ function randomize() {
 
   if (mode === 0) {
     const s = rand(scenarios);
-    title = `🎭 시나리오: ${s.name}`;
+    title = `<div class="result-label">🎭 시나리오: ${s.name}</div>`;
   descHTML = `
   <strong style="
     font-size:1.05rem;
@@ -284,7 +296,7 @@ function randomize() {
   } 
   else if (mode === 1) {
     const e = rand(enemies);
-    title = `⚔️ 적대국: ${e.name}`;
+    title = `<div class="result-label">⚔️ 적대국: ${e.name}</div>`;
    descHTML = `
   <strong style="
     font-size:1.05rem;
@@ -299,7 +311,7 @@ function randomize() {
   else {
     const s = rand(scenarios);
     const e = rand(enemies);
-    title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
+    title = `<div class="result-label">🎭 시나리오: ${s.name}</div><br><div class="result-label">⚔️ 적대국: ${e.name}</div>`;
 
  descHTML = `
   <strong style="
