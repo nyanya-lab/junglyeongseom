@@ -83,37 +83,38 @@
       line-height: 1.7;
     }
 
-    /* 🔥 info-block 복구됨 */
+    /* ===========================
+       📌 info-block 완전 안정 버전
+       =========================== */
+
+    /* 전체 행 */
     .info-block {
-      display: grid;
-      grid-template-columns: 103px 1fr;
-      gap: 10px 14px;
+      display: table;
+      width: 100%;
       margin: 10px 0;
-      align-items: stretch; 
     }
-/* 설명칸 자동 가운데맞춤 */
-.info-block > div:nth-child(2) {
-  display: flex;
-  align-items: center; /* 세로 가운데 정렬 */
-}
+
+    /* 아이콘 칸 */
     .info-icon {
+      display: table-cell;
       width: 95px;
-      padding: 6px 6px;
+      padding: 8px 6px;
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.9rem;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
       text-align: center;
-      line-height: 1.35;
-
-      height: auto;
-      min-height: 26px;
+      vertical-align: middle; /* ← 완전 세로 가운데 */
     }
 
+    /* 설명 칸 */
+    .info-text {
+      display: table-cell;
+      padding: 4px 0 4px 12px;
+      vertical-align: middle;
+      line-height: 1.55;
+    }
+
+    /* 색상 */
     .info-warn { background: #ffe7a3; }
     .info-easy { background: #d9f5d9; }
     .info-hard { background: #ffd4d4; }
@@ -156,6 +157,7 @@
       filter: brightness(1.1);
       transform: translateY(-2px);
     }
+
   </style>
 </head>
 
@@ -210,38 +212,55 @@
 
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
-  <div>
-    <strong>'노예 반란' 이벤트 카드</strong> 사용: 이벤트 덱 맨 위 2장과 함께 섞은 후, 덱 맨 아래에서 2장을 꺼내 맨 위에 올립니다.
+  <div class="info-text">
+    <strong>'노예 반란'</strong> 이벤트 카드 사용:<br>
+    이벤트 덱 맨 위 2장과 함께 섞은 후 맨 아래에서 2장을 꺼내 위에 올립니다.
   </div>
-  </div>
+</div>
+
 <div class="info-block">
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  <div>마을을 파괴하는 데 수월한 정령</div>
+  <div class="info-text">
+    마을을 파괴하는 데 수월한 정령
   </div>
+</div>
+
 <div class="info-block">
   <div class="info-icon info-hard">🔴 어려운 정령</div>
-  <div>마을 파괴 능력이 떨어지는 정령</div>
-</div>`
+  <div class="info-text">
+    마을 파괴 능력이 떨어지는 정령
+  </div>
+</div>
+`
     },
 
     {
       name: "스코틀랜드 왕국",
       desc: `
-무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적이며,<br>
+무역을 기반으로 빠르게 확장하며 봉쇄가 잘 통하지 않는 적입니다.<br>
 여러 세력과 거래해 행동 패턴이 예측하기 어렵습니다.<br>
 
 <div class="info-block">
   <div class="info-icon info-warn">⚠️ 주의</div>
-  <div><strong>D 섬보드</strong> : <br>해안이면서 습지인 지역이 2개 있어 게임의 균형을 해칠 수 있음</div>
+  <div class="info-text">
+    <strong>D 섬보드</strong> :<br> 해안이면서 습지인 지역이 2곳 있어 게임 균형을 해칠 수 있음
   </div>
+</div>
+
 <div class="info-block">
   <div class="info-icon info-easy">🟢 쉬운 정령</div>
-  <div>침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령</div>
+  <div class="info-text">
+    침략자 행동을 <strong>완전히 생략</strong>할 수 있는 정령
   </div>
+</div>
+
 <div class="info-block">
   <div class="info-icon info-hard">🔴 어려운 정령</div>
-  <div><strong>해안 지역의 도시 건설</strong>을 막기 어려운 정령</div>
-</div>`
+  <div class="info-text">
+    <strong>해안 지역 도시 건설</strong>을 막기 어려운 정령
+  </div>
+</div>
+`
     },
 
     { name: "합스부르크 군주국", desc: "금속과 채굴을 통해 자원 우위를 점합니다." },
@@ -261,28 +280,28 @@
       const s = rand(scenarios);
       title = `🎭 시나리오: ${s.name}`;
       descHTML = `
-  <strong style="
-    font-size:1.05rem;
-    background:#fff3e4;
-    padding:3px 6px;
-    border-radius:6px;
-    display:inline-block;
-  ">🎭 ${s.name}</strong>
-  <div class="desc-text">${s.desc}</div>
+<strong style="
+  font-size:1.05rem;
+  background:#fff3e4;
+  padding:3px 6px;
+  border-radius:6px;
+  display:inline-block;
+">🎭 ${s.name}</strong>
+<div class="desc-text">${s.desc}</div>
 `;
     }
     else if (mode === 1) {
       const e = rand(enemies);
       title = `⚔️ 적대국: ${e.name}`;
       descHTML = `
-  <strong style="
-    font-size:1.05rem;
-    background:#fff3e4;
-    padding:3px 6px;
-    border-radius:6px;
-    display:inline-block;
-  ">⚔️ ${e.name}</strong>
-  <div class="desc-text">${e.desc}</div>
+<strong style="
+  font-size:1.05rem;
+  background:#fff3e4;
+  padding:3px 6px;
+  border-radius:6px;
+  display:inline-block;
+">⚔️ ${e.name}</strong>
+<div class="desc-text">${e.desc}</div>
 `;
     }
     else {
@@ -291,24 +310,24 @@
       title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
 
       descHTML = `
-  <strong style="
-    font-size:1.05rem;
-    background:#fff3e4;
-    padding:3px 6px;
-    border-radius:6px;
-    display:inline-block;
-  ">🎭 ${s.name}</strong>
-  <div class="desc-text">${s.desc}</div>
-  <br>
+<strong style="
+  font-size:1.05rem;
+  background:#fff3e4;
+  padding:3px 6px;
+  border-radius:6px;
+  display:inline-block;
+">🎭 ${s.name}</strong>
+<div class="desc-text">${s.desc}</div>
+<br>
 
-  <strong style="
-    font-size:1.05rem;
-    background:#fff3e4;
-    padding:3px 6px;
-    border-radius:6px;
-    display:inline-block;
-  ">⚔️ ${e.name}</strong>
-  <div class="desc-text">${e.desc}</div>
+<strong style="
+  font-size:1.05rem;
+  background:#fff3e4;
+  padding:3px 6px;
+  border-radius:6px;
+  display:inline-block;
+">⚔️ ${e.name}</strong>
+<div class="desc-text">${e.desc}</div>
 `;
     }
 
