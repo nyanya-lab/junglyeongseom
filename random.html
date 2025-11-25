@@ -254,7 +254,13 @@ function randomize() {
     const s = rand(scenarios);
     title = `🎭 시나리오: ${s.name}`;
     descHTML = `
-      <strong>🎭 ${s.name}</strong><br>
+       <strong style="
+    font-size:1.25rem;
+    background:#fff3e4;
+    padding:6px 10px;
+    border-radius:8px;
+    display:inline-block;
+  ">🎭 ${s.name}</strong><br>
       ${s.desc}
     `;
   } 
@@ -262,7 +268,13 @@ function randomize() {
     const e = rand(enemies);
     title = `⚔️ 적대국: ${e.name}`;
     descHTML = `
-      <strong>⚔️ ${e.name}</strong><br>
+       <strong style="
+    font-size:1.25rem;
+    background:#fff3e4;
+    padding:6px 10px;
+    border-radius:8px;
+    display:inline-block;
+  ">⚔️ ${e.name}</strong><br>
       ${e.desc}
     `;
   } 
@@ -272,10 +284,22 @@ function randomize() {
     title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
 
     descHTML = `
-      <strong>🎭 ${s.name}</strong><br>
+       <strong style="
+    font-size:1.25rem;
+    background:#fff3e4;
+    padding:6px 10px;
+    border-radius:8px;
+    display:inline-block;
+  ">🎭 ${s.name}</strong><br>
       ${s.desc}<br><br>
 
-      <strong>⚔️ ${e.name}</strong><br>
+      <strong style="
+    font-size:1.25rem;
+    background:#fff3e4;
+    padding:6px 10px;
+    border-radius:8px;
+    display:inline-block;
+  ">⚔️ ${e.name}</strong><br>
       ${e.desc}
     `;
   }
