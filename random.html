@@ -83,8 +83,9 @@
   box-sizing: border-box;
 }
 .desc-text {
-  padding-left: 20px;  /* ← 설명만 우측으로 이동 */
-  text-indent: 0;       /* 혹시 있을 첫 줄 들여쓰기 제거 */
+  padding-left: 18px;
+  padding-right: 10px;
+  line-height: 1.7;
 }
     .info-block {
   display: grid;
@@ -264,55 +265,56 @@ function randomize() {
   if (mode === 0) {
     const s = rand(scenarios);
     title = `🎭 시나리오: ${s.name}`;
-    descHTML = `
-       <strong style="
-  font-size:1.05rem;
-  background:#fff3e4;
-  padding:3px 6px;     /* ⬅️ 박스 크기 줄이는 핵심 */
-  border-radius:6px;
-  display:inline-block;
-  ">🎭 ${s.name}</strong><br>
-     <div class="desc-text"> ${s.desc}
-    `;
+  descHTML = `
+  <strong style="
+    font-size:1.05rem;
+    background:#fff3e4;
+    padding:3px 6px;
+    border-radius:6px;
+    display:inline-block;
+  ">🎭 ${s.name}</strong>
+  <div class="desc-text">${s.desc}</div>
+`;
   } 
   else if (mode === 1) {
     const e = rand(enemies);
     title = `⚔️ 적대국: ${e.name}`;
-    descHTML = `
-       <strong style="
-   font-size:1.05rem;
-  background:#fff3e4;
-  padding:3px 6px;     /* ⬅️ 박스 크기 줄이는 핵심 */
-  border-radius:6px;
-  display:inline-block;
-  ">⚔️ ${e.name}</strong><br>
-     <div class="desc-text"> ${e.desc}
-    `;
+   descHTML = `
+  <strong style="
+    font-size:1.05rem;
+    background:#fff3e4;
+    padding:3px 6px;
+    border-radius:6px;
+    display:inline-block;
+  ">⚔️ ${e.name}</strong>
+  <div class="desc-text">${e.desc}</div>
+`;
   } 
   else {
     const s = rand(scenarios);
     const e = rand(enemies);
     title = `🎭 시나리오: ${s.name}<br>⚔️ 적대국: ${e.name}`;
 
-    descHTML = `
-       <strong style="
- font-size:1.05rem;
-  background:#fff3e4;
-  padding:3px 6px;     /* ⬅️ 박스 크기 줄이는 핵심 */
-  border-radius:6px;
-  display:inline-block;
-  ">🎭 ${s.name}</strong><br>
-     <div class="desc-text"> ${s.desc}<br><br>
+ descHTML = `
+  <strong style="
+    font-size:1.05rem;
+    background:#fff3e4;
+    padding:3px 6px;
+    border-radius:6px;
+    display:inline-block;
+  ">🎭 ${s.name}</strong>
+  <div class="desc-text">${s.desc}</div>
+  <br>
 
-      <strong style="
-  font-size:1.05rem;
-  background:#fff3e4;
-  padding:3px 6px;     /* ⬅️ 박스 크기 줄이는 핵심 */
-  border-radius:6px;
-  display:inline-block;
-  ">⚔️ ${e.name}</strong><br>
-     <div class="desc-text"> ${e.desc}
-    `;
+  <strong style="
+    font-size:1.05rem;
+    background:#fff3e4;
+    padding:3px 6px;
+    border-radius:6px;
+    display:inline-block;
+  ">⚔️ ${e.name}</strong>
+  <div class="desc-text">${e.desc}</div>
+`;
   }
 
   document.getElementById("title").innerHTML = title;
