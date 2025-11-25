@@ -86,28 +86,31 @@
   padding-right: 10px;
   line-height: 1.7;
 }
-   .info-block {
+  .info-block {
   display: grid;
-  grid-template-columns: 100px 1fr; /* ← 아이콘 박스 너비 고정 */
-  gap: 8px 14px;
+  grid-template-columns: 95px 1fr;
+  gap: 10px 14px;
   margin: 10px 0;
-  align-items: center;  
- align-items: stretch;   /* ← 높이 자동 동기화 */
+  align-items: center; /* ← 각 행의 두 요소 모두 가운데로 배치 */
 }
 
 .info-icon {
   width: 95px;
-  padding: 6px 8px;
+  padding: 8px 10px;
+  background: #ffe7a3; /* 예: 주의 */
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center;      /* ← 아이콘 내부 세로 가운데 */
+  justify-content: center;  /* ← 가로 가운데 */
+  
   text-align: center;
   line-height: 1.3;
-  height: 100%;           /* ← 오른쪽 설명 높이와 동일하게 맞춤 */
-  min-height: 26px;       /* ← 너무 작아지지 않게 최소값 유지 */
+  
+  min-height: 30px;         /* 너무 작지 않게만 최소값 설정 */
+  height: auto;             /* ← 자동 높이 (너무 커지지 않음) */
 }
 .info-warn {
   background: #ffe7a3;
