@@ -88,26 +88,30 @@
 }
  .info-block {
   display: grid;
-  grid-template-columns: auto 1fr; /* ← 아이콘 박스 폭 자동 */
-  gap: 6px 12px;
+  grid-template-columns: 103px 1fr;
+  gap: 10px 14px;
   margin: 10px 0;
-  align-items: center; /* ← 위쪽 기준으로 딱 정렬 */
+  align-items: center; /* ← 각 행의 두 요소 모두 가운데로 배치 */
+    align-items: stretch;/* ← 핵심!! 각 row 높이에 맞춰 늘어남 */
 }
 
 .info-icon {
-  padding: 4px 6px;       /* ← 양옆 공백 확 줄임 */
-  background: #ffe7a3;
+  width: 95px;
+  padding: 8px 6px;
+  background: #ffe7a3; /* 예: 주의 */
   border-radius: 8px;
   font-weight: 700;
-  font-size: 0.85rem;
-
-  display: inline-flex;   /* ← 아이콘 최소 크기 유지 + 내용 따라 자연 확장 */
-  justify-content: center;
-  align-items: center;
+  font-size: 0.9rem;
+  
+  display: flex;
+  align-items: center;      /* ← 아이콘 내부 세로 가운데 */
+  justify-content: center;  /* ← 가로 가운데 */
+  
   text-align: center;
-
-  line-height: 1.25;
-  min-height: 24px;       /* ← 너무 작아지지 않게 최소값만 지정 */
+  line-height: 1.3;
+  
+  min-height: 26px;         /* 너무 작지 않게만 최소값 설정 */
+  height: 50%;  /* ← row 높이에 자동 맞춤 */;           
 }
 .info-warn {
   background: #ffe7a3;
