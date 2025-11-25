@@ -92,27 +92,30 @@
   gap: 10px 14px;
   margin: 10px 0;
 
-  align-items: center;  
-  /* ← 반드시 center 하나만! stretch 절대 금지 */
+  /* 핵심 !!!!!  
+     row 전체 높이를 아이콘과 내용이 공유하도록  
+     가운데 정렬 금지하기 */
+  align-items: stretch; 
 }
 
 .info-icon {
   width: 95px;
-  padding: 8px 6px;
-  background: #ffe7a3;
+  padding: 6px 6px;     /* ← 양옆 여백 줄이기 */
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
 
+  background: #ffe7a3;  /* 기본 주의 색 — 나중에 개별적으로 덮어씀 */
+
   display: flex;
-  align-items: center;      /* ← 아이콘 내부 세로 가운데 */
-  justify-content: center;  /* ← 가로 가운데 */
+  align-items: center;   /* 아이콘 내부 글자 세로 가운데 */
+  justify-content: center;
 
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
 
-  min-height: 26px;  /* 최소 높이만 */
-  height: auto;      /* ← 절대 고정값 X */
+  height: auto;          /* ← 설명 줄길이에 맞춰 자동 증가 O */
+  min-height: 30px;      /* 너무 작지 않게만 최소값 */
 }
 .info-warn {
   background: #ffe7a3;
