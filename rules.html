@@ -11,7 +11,6 @@
     padding: 20px;
     text-align: center;
 
-    /* 메인과 100% 동일한 우드톤 배경 */
     background: linear-gradient(135deg, #f6e9d0, #f2d9b1);
     background-size: cover;
     color: #5a3b1a;
@@ -25,7 +24,7 @@
         rgba(0,0,0,0.04) 4px
       );
 
-    padding-top: 80px; /* 상단 여백 확보 */
+    padding-top: 80px;
   }
 
   h1 {
@@ -36,7 +35,6 @@
     text-shadow: 0 2px 4px rgba(255,255,255,0.6);
   }
 
-  /* 🔍 검색창 */
   input {
     padding: 12px;
     width: 80%;
@@ -50,70 +48,71 @@
     margin-bottom: 30px;
   }
 
-  /* 규칙 박스 리스트 */
   .list {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 18px;
   }
-.highlight {
-   background: linear-gradient(
-    to bottom,
-    transparent 60%,
-    #ffe27a 60%       /* 더 진한 하이라이트 노랑 */
-  );
-  padding: 0 2px;      /* 글자 좌우 여백만 살짝 */
-  border-radius: 2px;
-  font-weight: 600;         /* 살짝 강조 */
-}
-  /* 📘 개별 규칙 박스 */
- .rule {
-  background: #ffffff;  /* 완전 흰색으로 변경 → 가장 가독성 좋음 */
- padding: 12px 22px 20px 22px;
-  border-radius: 18px;
-  width: 92%;
-  max-width: 680px;
 
-  text-align: left;
-  color: #3c2a16;  /* 조금 더 진한 브라운으로 눈에 잘 들어옴 */
-  
-  box-shadow: 
-    0 4px 12px rgba(0,0,0,0.15),
-    inset 0 1px 2px rgba(255,255,255,0.85);
+  .highlight {
+    background: linear-gradient(to bottom, transparent 60%, #ffe27a 60%);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
 
-  border-left: 8px solid #d7b68c; /* 더 밝은 우드톤 */
+  .rule {
+    background: #ffffff;
+    padding: 12px 22px 20px 22px;
+    border-radius: 18px;
+    width: 92%;
+    max-width: 680px;
+    text-align: left;
+    color: #3c2a16;
 
-  transition: 0.2s;
-  cursor: pointer;
-}
+    box-shadow: 
+      0 4px 12px rgba(0,0,0,0.15),
+      inset 0 1px 2px rgba(255,255,255,0.85);
 
-.rule:hover {
-  transform: translateY(-4px);
-  background: #fff8ef; /* 은은한 연우드 하이라이트 */
-}
- /* 📘 규칙 박스 안의 제목 스타일 */
+    border-left: 8px solid #d7b68c;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  .rule:hover {
+    transform: translateY(-4px);
+    background: #fff8ef;
+  }
+
   .rule-title {
-    background: #ffe7c6;       /* 연한 우드 느낌 배경 */
+    background: #ffe7c6;
     padding: 10px 14px;
     border-radius: 10px;
     margin-bottom: 12px;
     font-size: 1.1rem;
     font-weight: 800;
-    color:  #3a2511;          /* 진한 제목 색 */
-  }  /* ← 메인 버튼 동일 스타일 */
-   /* 📘 규칙 박스 안의 소제목 스타일 */
-.subtitle {
-  display: inline-block;
-  padding: 4px 10px;
-  background: #fff3e4;  /* 더 밝은 우드톤 */
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #5a3b1a;  
-  margin-bottom: 6px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
+    color: #3a2511;
+  }
+
+  .subtitle {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #fff3e4;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5a3b1a;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+
+  /* ⭐ desc 내용만 들여쓰기 */
+  .rule-desc {
+    padding-left: 14px;
+    line-height: 1.75;
+  }
+
   .back {
     position: fixed;
     top: 15px;
@@ -141,7 +140,6 @@
     filter: brightness(1.06);
   }
 </style>
-
 </head>
 
 <body>
@@ -155,6 +153,7 @@
 <button class="back" onclick="window.location.href='index.html'">← 메인으로 돌아가기</button>
 
 <script>
+
 const rules = [
   { title: "🧞세상을 흠뻑 적시는 폭우", desc: "두 번째 타고난 능력으로 섬에서 현신을 제거한다면, 그 현신은 파괴된 현신과 동일하게 간주<br>그러므로, '타오르는 부활' 주요 능력으로 되돌아올 수 있습니다.<br>파괴를 방지하는 효과로는 이를 방지할 수 없도록 “파괴”라는 용어를 사용하지 않았습니다." },
   { title: "🧞보이지 않는 길을 찾는 자", desc: "• 현신을 놓는 성장 선택을 사용해서 '사정 거리 +1' 트랙 효과를 공개할 때, 이 효과는 그 현신을 놓은 다음 적용<br>• 침략자/다한이 실제로 파괴된 다음에만 “죽은 이들에 대한 책임감”이 발동됩니다.<br>• '길을 여는 자'를 사용해서 지역 한 곳을 바다에 인접하게 만들었다면, 그 지역은 해안 지역이 됩니다.<br>• 맹수 아이콘 무시한다고 해서 이 정령의 균형을 해치지 않음.<br>• 현신 트랙에서 동일 칸에 도달하는 경로가 여러 개여도 효과는 1번만 적용됩니다." },
@@ -416,49 +415,45 @@ const rules = [
 세계 해상 무역에서 빠르게 성장한 무역 강국입니다.<br>` }
 ];
 
+/* DOM */
 const list = document.getElementById("ruleList");
 const input = document.getElementById("searchInput");
 
-/* 🔍 검색어 하이라이트 함수 */
+/* 검색 강조 */
 function highlight(text, keyword) {
   if (!keyword) return text;
   const regex = new RegExp(`(${keyword})`, "gi");
   return text.replace(regex, `<span class="highlight">$1</span>`);
 }
 
-/* 📌 규칙 박스 렌더링 */
-
-  function renderList(filter="") {
+/* 렌더링 */
+function renderList(filter="") {
   list.innerHTML = "";
-
-  // 🔍 공백 단위로 키워드 분리
   const keywords = filter.trim().split(/\s+/);
 
   rules
     .filter(r => {
       const text = (r.title + " " + r.desc).toLowerCase();
-
-      // 🔍 모든 키워드가 포함된 규칙만 true
       return keywords.every(k => text.includes(k.toLowerCase()));
     })
     .forEach(r => {
-      // 🔍 강조 표시용 함수
-      function highlight(text) {
-        let result = text;
+
+      function applyHighlight(text) {
+        let t = text;
         keywords.forEach(k => {
           if (!k) return;
           const regex = new RegExp(`(${k})`, "gi");
-          result = result.replace(regex, `<span class="highlight">$1</span>`);
+          t = t.replace(regex, `<span class="highlight">$1</span>`);
         });
-        return result;
+        return t;
       }
 
       const div = document.createElement("div");
       div.className = "rule";
 
       div.innerHTML = `
-        <div class="rule-title">${highlight(r.title)}</div>
-        ${highlight(r.desc)}
+        <div class="rule-title">${applyHighlight(r.title)}</div>
+        <div class="rule-desc">${applyHighlight(r.desc)}</div>
       `;
 
       list.appendChild(div);
@@ -470,7 +465,7 @@ input.addEventListener("input", e => {
   renderList(e.target.value.trim());
 });
 
-/* 첫 랜더링 */
+/* 초기 렌더 */
 renderList();
 
 </script>
