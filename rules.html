@@ -324,9 +324,42 @@ const rules = [
 `
 }, 
 
-  { title: "", desc: "" },
-  { title: "", desc: "" },
-  { title: "", desc: "" },
+  { title: "보너스 칸",
+   desc: "양상이나 정령에게 이와 같은 칸이 있다면, 이는 <strong>매 차례</strong> 획득하는 보너스입니다.<br>공개된 현신 칸과 같은 방식으로 작동하나, <strong>절대 그 칸에 현신을 놓을 수는 없습니다.</strong>" },
+  { title: " 현신 트랙에서의 유연한 원소 칸", 
+   desc: "이와 같은 현신 트랙 칸은 “원하는 원소” 칸과 같은 방식으로 작동하나 해당 칸에 표시된 원소 중에서만 선택할 수 있습니다<br><strong>매 차례에 아무 때나</strong> 어떤 원소를 얻을 지 결정할 수 있으나, 한 번 결정했다면 다음 차례를 시작하기 전까지는 그 결정을 변경할 수 없습니다" },
+  {
+  title: "📈 승격 & 📉 강등",
+  desc: `
+<strong class="subtitle">📌 기본 개념</strong><br>
+승격은 침략자를 <strong>더 큰 등급</strong>으로 바꾸는 것,<br>
+강등은 침략자를 <strong>더 작은 등급</strong>으로 바꾸는 것입니다.<br><br>
+
+<strong class="subtitle">📈 승격</strong><br>
+침략자를 승격시키면 다음과 같이 교체합니다:<br>
+• 🚶🏻‍➡️ 탐험가 → 🏠 마을<br>
+• 🏠 마을 → 🏢 도시<br><br>
+
+❗ 만약 어떤 효과가 <strong>도시(🏢) 승격</strong>에 대해 정확한 규칙을 제공하지 않는다면,<br>
+🏢 도시는 승격시킬 수 없습니다.<br><br>
+
+<strong class="subtitle">📉 강등</strong><br>
+침략자를 강등시키면 다음과 같이 교체합니다:<br>
+• 🏢 도시 → 🏠 마을<br>
+• 🏠 마을 → 🚶🏻‍➡️ 탐험가<br>
+• 🚶🏻‍➡️ 탐험가를 강등 → <strong>제거됨</strong><br><br>
+
+<strong class="subtitle">📌 교체 시 공통 규칙</strong><br>
+승격과 강등은 모두 <strong>침략자 교체 규칙</strong>을 따릅니다.<br>
+구성물의 종류만 바뀔 뿐 추가 발생은 없습니다.<br><br>
+
+✔ 기존에 붙어 있던 <strong>✊🏼 내분토큰</strong> 유지<br>
+✔ 기존에 받은 <strong>피해</strong> 유지<br>
+✔ 교체된 새 침략자의 체력보다 피해가 많다면 즉시 파괴됨<br><br>
+
+즉, “해당 침략자”만 종류가 바뀌고 그 외의 상태는 그대로 유지됩니다.
+`
+},
   { title: "", desc: "" },
   { title: "", desc: "" },
   { title: "", desc: "" },
