@@ -410,23 +410,24 @@ function highlight(text, keyword) {
   const regex = new RegExp(`(${keyword})`, "gi");
   return text.replace(regex, `<span class="highlight">$1</span>`);
 }
-
-/* 📌 subtitle 이후 텍스트 감싸주는 파서 */
 function splitDesc(descHTML) {
   const parts = descHTML.split(/(<strong class="subtitle">.*?<\/strong>)/g);
   let html = "";
 
   parts.forEach(part => {
     if (part.includes('subtitle')) {
-      html += part;   // ← ★ 여기에 <br> 절대 넣지 않음
+      html += part;  
     } else if (part.trim() !== "") {
+
+      // 🔥 subtitle 뒤에 자동으로 들어오는 개행 + <br> + <br><br> 제거
+      part = part.replace(/^(\s*<br\s*\/?>)*/g, "");
+
       html += `<div class="desc-inner">${part}</div>`;
     }
   });
 
   return html;
 }
-
 
 
 /* 렌더링 */
