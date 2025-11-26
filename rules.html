@@ -112,8 +112,10 @@
     padding-left: 14px;
     line-height: 1.75;
   }
-.rule-desc > *:not(.subtitle) {
-  padding-left: 18px; /* 원하는 만큼 조절 가능 */
+.desc-inner {
+  padding-left: 16px; /* 원하는 만큼 조절 */
+  line-height: 1.75;
+}
 }
   .back {
     position: fixed;
@@ -453,10 +455,14 @@ function renderList(filter="") {
       const div = document.createElement("div");
       div.className = "rule";
 
-      div.innerHTML = `
-        <div class="rule-title">${applyHighlight(r.title)}</div>
-        <div class="rule-desc">${applyHighlight(r.desc)}</div>
-      `;
+     div.innerHTML = `
+  <div class="rule-title">${applyHighlight(r.title)}</div>
+  <div class="rule-desc">
+     <div class="desc-inner">
+        ${applyHighlight(r.desc)}
+     </div>
+  </div>
+`;
 
       list.appendChild(div);
     });
