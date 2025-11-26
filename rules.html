@@ -10,20 +10,13 @@
     margin: 0;
     padding: 20px;
     text-align: center;
-
     background: linear-gradient(135deg, #f6e9d0, #f2d9b1);
-    background-size: cover;
+    background-image: repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.15) 0px,
+      rgba(255,255,255,0.15) 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px);
     color: #5a3b1a;
-
-    background-image: 
-      repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.15) 0px,
-        rgba(255,255,255,0.15) 2px,
-        rgba(0,0,0,0.04) 2px,
-        rgba(0,0,0,0.04) 4px
-      );
-
     padding-top: 80px;
   }
 
@@ -70,11 +63,9 @@
     max-width: 680px;
     text-align: left;
     color: #3c2a16;
-
-    box-shadow: 
+    box-shadow:
       0 4px 12px rgba(0,0,0,0.15),
       inset 0 1px 2px rgba(255,255,255,0.85);
-
     border-left: 8px solid #d7b68c;
     transition: 0.2s;
     cursor: pointer;
@@ -107,16 +98,12 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
 
-  /* ⭐ desc 내용만 들여쓰기 */
-  .rule-desc {
-    padding-left: 14px;
+  /* 🌟 subtitle 이후 텍스트만 들여쓰기 */
+  .desc-inner {
+    padding-left: 16px;
     line-height: 1.75;
   }
-.desc-inner {
-  padding-left: 16px; /* 원하는 만큼 조절 */
-  line-height: 1.75;
-}
-}
+
   .back {
     position: fixed;
     top: 15px;
@@ -125,18 +112,13 @@
     padding: 10px 18px;
     border-radius: 14px;
     border: 2px solid rgba(255,255,255,0.65);
-
     font-size: 0.95rem;
     font-weight: 800;
     color: #4a2f14;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
-
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,0.25),
                 inset 0 1px 2px rgba(255,255,255,0.7);
-
     transition: 0.18s;
-    z-index: 1000;
   }
 
   .back:hover {
@@ -149,14 +131,12 @@
 <body>
 
 <h1>📖 정령섬 세부 규칙 검색</h1>
-
 <input type="text" id="searchInput" placeholder="예: 공포, 건설, 승리 조건 등">
-
 <div class="list" id="ruleList"></div>
-
 <button class="back" onclick="window.location.href='index.html'">← 메인으로 돌아가기</button>
 
 <script>
+/* 기존 rules 데이터 그대로 유지 */
 
 const rules = [
   { title: "🧞세상을 흠뻑 적시는 폭우", desc: "두 번째 타고난 능력으로 섬에서 현신을 제거한다면, 그 현신은 파괴된 현신과 동일하게 간주<br>그러므로, '타오르는 부활' 주요 능력으로 되돌아올 수 있습니다.<br>파괴를 방지하는 효과로는 이를 방지할 수 없도록 “파괴”라는 용어를 사용하지 않았습니다." },
@@ -430,42 +410,52 @@ function highlight(text, keyword) {
   return text.replace(regex, `<span class="highlight">$1</span>`);
 }
 
+/* 📌 subtitle 이후 텍스트 감싸주는 파서 */
+function splitDesc(descHTML) {
+  const parts = descHTML.split(/(<strong class="subtitle">.*?<\/strong>)/g);
+  let html = "";
+
+  parts.forEach(part => {
+    if (part.includes('subtitle')) {
+      html += part + "<br>";
+    } else if (part.trim() !== "") {
+      html += `<div class="desc-inner">${part}</div>`;
+    }
+  });
+
+  return html;
+}
+
 /* 렌더링 */
 function renderList(filter="") {
   list.innerHTML = "";
   const keywords = filter.trim().split(/\s+/);
 
-  rules
-    .filter(r => {
-      const text = (r.title + " " + r.desc).toLowerCase();
-      return keywords.every(k => text.includes(k.toLowerCase()));
-    })
-    .forEach(r => {
+  rules.filter(r => {
+    const text = (r.title + " " + r.desc).toLowerCase();
+    return keywords.every(k => text.includes(k.toLowerCase()));
+  }).forEach(r => {
 
-      function applyHighlight(text) {
-        let t = text;
-        keywords.forEach(k => {
-          if (!k) return;
-          const regex = new RegExp(`(${k})`, "gi");
-          t = t.replace(regex, `<span class="highlight">$1</span>`);
-        });
-        return t;
-      }
+    function applyHighlight(text) {
+      let t = text;
+      keywords.forEach(k => {
+        if (!k) return;
+        const regex = new RegExp(`(${k})`, "gi");
+        t = t.replace(regex, `<span class="highlight">$1</span>`);
+      });
+      return t;
+    }
 
-      const div = document.createElement("div");
-      div.className = "rule";
+    const div = document.createElement("div");
+    div.className = "rule";
 
-     div.innerHTML = `
-  <div class="rule-title">${applyHighlight(r.title)}</div>
-  <div class="rule-desc">
-     <div class="desc-inner">
-        ${applyHighlight(r.desc)}
-     </div>
-  </div>
-`;
+    div.innerHTML = `
+      <div class="rule-title">${applyHighlight(r.title)}</div>
+      <div class="rule-desc">${splitDesc(applyHighlight(r.desc))}</div>
+    `;
 
-      list.appendChild(div);
-    });
+    list.appendChild(div);
+  });
 }
 
 /* 입력 이벤트 */
@@ -475,7 +465,6 @@ input.addEventListener("input", e => {
 
 /* 초기 렌더 */
 renderList();
-
 </script>
 
 </body>
