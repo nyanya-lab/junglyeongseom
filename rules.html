@@ -189,8 +189,7 @@ const rules = [
   title: "👣 동반",
   desc: `
 <strong class="subtitle">📌 기본 개념</strong><br>
-어떤 구성물이 <strong>다른 구성물을 동반</strong>하는 능력을 가지고 있다면,<br>
-그 구성물이 이동할 때 함께 데려갈 수 있습니다.<br><br>
+어떤 구성물이 <strong>다른 구성물을 동반</strong>하는 능력을 가지고 있다면, 그 구성물이 이동할 때 함께 데려갈 수 있습니다.<br><br>
 
 <strong class="subtitle">📌 이동 중 동반의 처리</strong><br>
 전방 구성물이 이동하거나, 밀리거나, 끌려가는 동안<br>
@@ -203,9 +202,8 @@ const rules = [
 
 <strong class="subtitle">📘 예시</strong><br>
 이번 확장에 <strong>천둥으로 말하는 자</strong>가 포함되었다면,<br>
-다음 규칙이 올바른 문장입니다:<br><br>
 
-<em>“다한 각각이 이동할 때 당신의 현신 1개를 동반할 수 있습니다.”</em><br><br>
+<em>“다한 각각이 이동할 때 당신의 현신 1개를 동반할 수 있습니다.”</em><br>
 
 이는 다한이 이동하면, 그 다한이 지정한 현신 1개 또한 함께 이동한다는 뜻입니다.
 `
@@ -233,6 +231,32 @@ const rules = [
 프랑스 왕국은 전쟁 자금 확보를 위해 식민지를 확장하고,<br>
 빠른 마을 성장과 탐험 역량으로 초반 압박이 강한 적입니다.<br>
 ` },
+  {
+  title: "📦 준비 & 점유",
+  desc: `
+<strong class="subtitle">📌 준비(Prepare)</strong><br>
+어떤 구성물을 <strong>준비시키라</strong>는 것은<br>
+추후 사용할 수 있도록 그 구성물을 <strong>자신의 정령 보드에 놓으라</strong>는 뜻입니다.<br><br>
+
+<strong class="subtitle">📌 점유(Claim)</strong><br>
+어떤 구성물을 <strong>점유하라</strong>는 것은<br>
+그 구성물을 <strong>자신의 정령 보드에 영구히 추가하라</strong>는 뜻입니다.<br><br>
+
+<strong class="subtitle">📌 준비 / 점유 시의 공통 규칙</strong><br>
+준비 또는 점유하라는 지시가 있을 때는,<br>
+그 구성물을 <strong>공급처에서 가져와</strong> 자신의 정령 보드 옆에 놓습니다.<br><br>
+
+<strong class="subtitle">📌 기능적 특징</strong><br>
+준비된/점유된 구성물은 그 자체로는<br>
+• 어떤 행동도 하지 않고<br>
+• 어떤 구성물과도 상호작용하지 않습니다.<br><br>
+
+하지만 다음과 같은 경우 사용할 수 있습니다:<br>
+• 준비된 구성물을 사용하는 효과가 활성화될 때<br>
+• 어떤 구성물을 점유하고 있는지 확인해야 할 때<br>
+• 점유한 구성물의 수를 확인하는 능력이 있을 때
+`
+},
   { title: "양상", desc: "보통은 한장 사용이나 일부 양상의 경우 여러 장의 카드로 구성되어 있습니다. 해당 양상의 모든 카드를 하나의 묶음으로 사용해야 합니다. 자신이 원하는 카드를 선택할 수 없습니다." },
 {
   title: "🌿 정령 특화 구성물",
@@ -369,11 +393,37 @@ const rules = [
 즉, “해당 침략자”만 종류가 바뀌고 그 외의 상태는 그대로 유지됩니다.
 `
 },
-  { title: "", desc: "" },
-  { title: "", desc: "" },
-  { title: "", desc: "" },
-  { title: "", desc: "" },
+  {
+  title: "🔖 구성물 혹은 지역 표시하기",
+  desc: `
+<strong class="subtitle">📌 표시의 기본 개념</strong><br>
+일부 능력은 특정 구성물 또는 지역을 <strong>표시</strong>하여<br>
+그 대상이 특별한 상태임을 나타냅니다.<br><br>
 
+<strong class="subtitle">📌 구성물에 표시하기</strong><br>
+어떤 <strong>구성물을 표시하라</strong>는 지시를 받으면,<br>
+해당 구성물 아래에 별도의 구성물을 놓아 그 구성물이 특수하다는 것을 드러냅니다.<br><br>
+사용할 수 있는 표시용 구성물 예시:<br>
+• 시나리오 마커<br>
+• 자신의 색깔 혹은 사용하지 않는 색깔의 표시 마커<br>
+• 일반적으로 보드에 놓지 않는 여분의 구성물<br>
+• (어떤 게임의 구성물이든 사용해도 무방)<br><br>
+
+<strong class="subtitle">📌 지역에 표시하기</strong><br>
+어떤 <strong>지역을 표시하라</strong>는 지시를 받으면,<br>
+그 지역에 일반적으로 놓지 않는 구성물을 하나 올려두어<br>
+그 지역이 특수 상태임을 표시합니다.<br><br>
+
+<strong class="subtitle">📌 표시의 지속</strong><br>
+구성물이나 지역에 표시하여 부여된 특수 속성은<br>
+<strong>표시가 남아 있는 동안 계속 유지됩니다.</strong><br>
+• ‘시간 흐름’ 단계에서도 제거되지 않습니다.<br><br>
+
+<strong class="subtitle">📌 주의: 표시용 구성물의 성질</strong><br>
+표시에 사용된 구성물은<br>
+<strong>그 자체로는 게임 구성물이 아니며</strong><br>
+어떠한 요소와도 상호작용하지 않습니다.<br>
+` },
   {
   title: "🔱스코틀랜드 왕국: 찰스 2세의 아들, 제임스 7세",
   desc: `
